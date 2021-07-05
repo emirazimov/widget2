@@ -1,0 +1,93 @@
+import Grid from "@material-ui/core/Grid"
+import Typography from "@material-ui/core/Typography"
+import React, { useState } from "react"
+import { useFormContext } from "react-hook-form"
+import {
+  MinusIcon,
+  NumberOfPassengers,
+  NumberOfPassengersIcon,
+  PlusIcon,
+} from "../../../assets/icons"
+
+const PassengerQuantity = ({ passengersqState, setPassengers, passengers }) => {
+  const { register } = useFormContext()
+
+  const onDecrease = () => {
+    if (passengers === 0) {
+      return
+    }
+    setPassengers((passengers) => passengers - 1)
+  }
+  const onIncrease = () => {
+    if (passengers === 14) {
+      return
+    }
+    setPassengers((passengers) => passengers + 1)
+  }
+
+  //   React.useEffect(() => {
+  //     setPassengers(parseInt(passengersqState))
+  //   }, [passengersqState])
+  return (
+    <Grid container direction="row" justify="space-between" alignItems="center">
+      <Grid item>
+        <Grid container direction="row">
+          <NumberOfPassengersIcon
+            style={{ paddingLeft: "30px" }}
+          ></NumberOfPassengersIcon>
+          <Typography style={{ color: "white", fontSize: "14px" }}>
+            Number of passengers
+          </Typography>
+        </Grid>
+      </Grid>
+      <Grid item>
+        <Grid
+          container
+          direction="row"
+          justify="space-around"
+          alignItems="center"
+        >
+          <Grid item>
+            <span
+              onClick={onDecrease}
+              // style={{ "&:hover": { color: "white" } }}
+            >
+              <MinusIcon />
+            </span>
+          </Grid>
+          <Grid item style={{ textAlign: "center" }}>
+            <input
+              ref={register}
+              name="passengersQuantity"
+              onChange={(e) => {
+                setPassengers(e.target.value)
+              }}
+              value={passengers}
+              size="1"
+              style={{
+                // pointerEvents: "none",
+                marginRight: "3px",
+                marginBottom: "4px",
+                backgroundColor: "transparent",
+                border: "none",
+                color: "#FFFFFF",
+                textAlign: "center",
+                fontFamily: "Roboto",
+                textTransform: "none",
+                fontWeight: "400",
+                fontSize: "14px",
+              }}
+            />
+          </Grid>
+          <Grid item>
+            <span onClick={onIncrease}>
+              <PlusIcon />
+            </span>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
+  )
+}
+
+export default PassengerQuantity
