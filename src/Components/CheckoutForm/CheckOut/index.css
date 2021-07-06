@@ -2,6 +2,7 @@
   /* margin-left: 0px;
   margin-right: 0px;
   height: 42px; */
+
   width: 100%;
   height: 41px;
   border: 1px solid #191929;
@@ -79,4 +80,11 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #c5cde3;
+}
+.ant-picker-dropdown {
+  /* position: sticky; */
+}
+.ant-picker-panel {
+}
+.ant-picker-panel-content {
 }

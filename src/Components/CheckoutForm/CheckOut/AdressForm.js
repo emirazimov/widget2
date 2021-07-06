@@ -1,5 +1,5 @@
 import DateFnsUtils from "@date-io/date-fns"
-import { ListItem, TextField } from "@material-ui/core"
+import { ListItem, TextField, useMediaQuery } from "@material-ui/core"
 import Button from "@material-ui/core/Button"
 import Grid from "@material-ui/core/Grid"
 import InputAdornment from "@material-ui/core/InputAdornment"
@@ -41,7 +41,7 @@ import Carousel, { consts } from "react-elastic-carousel"
 // import Carousel from "react-material-ui-carousel";
 import Tooltip from "@material-ui/core/Tooltip"
 import { setFormData } from "./../../../Redux/form-reducer"
-import "@brainhubeu/react-carousel/lib/style.css"
+// import "@brainhubeu/react-carousel/lib/style.css"
 import { createMuiTheme } from "@material-ui/core"
 import { ThemeProvider } from "@material-ui/styles"
 import Blue from "@material-ui/core/colors/blue"
@@ -126,6 +126,12 @@ const useStyles = makeStyles((theme) => ({
       opacity: "1",
       fontSize: "14px",
     },
+    "&:-webkit-autofill": {
+      height: "0px",
+      border: "none",
+      borderRadius: "0px",
+      WebkitBoxShadow: "0 0 0 1000px #191929 inset",
+    },
   },
   listRoot: {
     "&:hover": {
@@ -163,7 +169,8 @@ const useStyles = makeStyles((theme) => ({
     // paddingTop: "20px",
     marginTop: "10px",
     marginBottom: "10px",
-    border: "1px solid red",
+    paddingBottom: "6px",
+    border: "1px solid #db5858",
     borderRadius: "10px",
   },
   carContainerDefault: {
@@ -418,7 +425,7 @@ const AdressFormwithoutReactMemo = ({
       setIsAirline(true)
       setBookingType(3)
       fetchAirlines()
-      setDisableHourly(true)
+      // setDisableHourly(true)
     } else {
       setIsAirline(false)
       setDisableHourly(false)
@@ -442,6 +449,8 @@ const AdressFormwithoutReactMemo = ({
       </Button>
     )
   }
+
+  const isMobile = useMediaQuery("(max-width:530px)")
 
   return (
     <Grid item>
@@ -523,14 +532,14 @@ const AdressFormwithoutReactMemo = ({
                       justify="space-between"
                       alignItems="center"
                     >
-                      <Grid item xs={6}>
+                      <Grid item style={{ width: "50%" }}>
                         <CustomFormInput
                           name="flightNumber"
                           variant="outlined"
                           placeholder="Flight number"
                           style={{
                             height: "40px",
-                            border: "none",
+                            // border: "none",
                             backgroundColor: "#191929",
                             width: "94%",
                             marginBottom: "0px",
@@ -634,7 +643,7 @@ const AdressFormwithoutReactMemo = ({
                     </Grid>
                     <Grid
                       item
-                      style={{ width: "47%", position: "relative" }}
+                      style={{ width: "47%" }}
                       InputProps={{
                         classes: {
                           root: classes.inputTimehover,
@@ -659,6 +668,7 @@ const AdressFormwithoutReactMemo = ({
                         placeholder="Pick up Time"
                         format="h:mm a"
                         allowClear={false}
+                        inputReadOnly={isMobile ? true : false}
                         style={{
                           zIndex: "10",
                           paddingLeft: "36px",
@@ -669,7 +679,7 @@ const AdressFormwithoutReactMemo = ({
                           // height: "41px",
                           // borderRadius: "9px",
                         }}
-                      ></TimeInputControl>
+                      />
 
                       {/* <TimeInputControl
                         // value={selectedDate}
@@ -741,7 +751,7 @@ const AdressFormwithoutReactMemo = ({
                   </Grid>
                   <AntSwitch
                     color="primary"
-                    disabled={disableHourly}
+                    // disabled={disableHourly}
                     checked={hourly}
                     onClick={() => {
                       setHourly(!hourly)
@@ -832,7 +842,7 @@ const AdressFormwithoutReactMemo = ({
                       //   },
                       // }}
                       renderArrow={myArrow}
-                      itemsToShow={3}
+                      itemsToShow={!isMobile ? 3 : 2}
                       pagination={false}
                       transitionMs={300}
                     >

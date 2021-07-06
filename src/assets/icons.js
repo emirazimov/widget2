@@ -1,5 +1,6 @@
 import * as React from "react"
 import { useState } from "react"
+import Draggable from "react-draggable"
 import "./iconsStyle.css"
 
 export const LocationIcon = () => (
@@ -406,6 +407,8 @@ export const BookinglaneIcon = () => (
 )
 
 export const BookinglaneIconForMobile = () => (
+  // <Draggable handle="#draggable">
+  //   <div id="draggable">
   <svg
     width="100"
     height="85"
@@ -473,6 +476,8 @@ export const BookinglaneIconForMobile = () => (
       </filter>
     </defs>
   </svg>
+  //   </div>
+  // </Draggable>
 )
 
 export const CloseWidgetIcon = () => (

@@ -25,6 +25,7 @@ import { Preloader } from "./Components/Helpers/Preloader"
 import { userScreenHeight, userScreenWidth, useStyles } from "./AppStyles"
 import { AppBar, useMediaQuery } from "@material-ui/core"
 import { useRef } from "react"
+// import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 
 let xOrdinate = 0
 let yOrdinate = 0
@@ -42,6 +43,9 @@ const App = (props) => {
   const [heightOfCard, setHeightOfCard] = React.useState(0)
   const refOfCard = useRef(null)
   const [heightOfBookNow, setHeightOfBookNow] = React.useState(0)
+  const [backgroundScrollStop, setBackgroundScrollStop] = React.useState(false)
+  const [draggable, setDraggable] = React.useState(false)
+
   const refOfBookNow = useRef(null)
 
   const handleClickOpen = () => {
@@ -54,6 +58,7 @@ const App = (props) => {
 
   const handleClose = () => {
     setExpanded(false)
+    document.body.style.overflowY = "unset"
   }
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -143,10 +148,30 @@ const App = (props) => {
     // console.log(userScreenHeight)
   }
 
+  const disableAccordionButtonMobile = () => {
+    setDraggable(true)
+  }
+
+  React.useEffect(() => {
+    if (backgroundScrollStop) {
+      document.body.style.overflowY = "hidden"
+    } else {
+      document.body.style.overflowY = "unset"
+    }
+  }, [backgroundScrollStop])
+
   React.useEffect(() => {
     setHeightOfBookNow(refOfBookNow.current.clientHeight)
   }, [heightOfBookNow])
   const handleDrag = (e, ui) => {
+    position.current.x = ui.x
+    position.current.y = ui.y
+    if (!expanded)
+      setTimeout(() => {
+        setDisabled(true)
+      }, 80)
+  }
+  const handleDragForMobile = (e, ui) => {
     position.current.x = ui.x
     position.current.y = ui.y
     if (!expanded)
@@ -181,14 +206,6 @@ const App = (props) => {
           <CssBaseline />
           <ThemeProvider theme={theme}>
             <div className={classes.mainMobile}>
-              {/* <Draggable
-                onDrag={handleDrag}
-                onStop={enableAccordionButtonMobile}
-                position={position.current}
-                // disabled={false}
-                // bounds="body"
-                handle="#panel1a-header"
-              > */}
               <Accordion
                 elevation={0}
                 disabled={disabled}
@@ -201,14 +218,32 @@ const App = (props) => {
                 }}
                 expanded={expanded === "panel1"}
                 onChange={handleChange("panel1")}
+                id="panel1a-header1"
               >
+                {/* <Draggable
+                  // onStart={disableAccordionButtonMobile}
+                  onDrag={handleDragForMobile}
+                  onStop={enableAccordionButtonMobile}
+                  position={position.current}
+                  disabled={false}
+                  // bounds="body"
+                  // handle="#panel1a-header"
+                  // allowAnyClick={false}
+                  // enableUserSelectHack={false}
+                > */}
+
                 <AccordionSummary
                   className={classes.accordion}
                   expandIcon={<BookinglaneIconForMobile />}
                   aria-controls="panel1a-content"
                   id="panel1a-header"
                   ref={refOfBookNow}
+                  onClick={() => {
+                    setBackgroundScrollStop(true)
+                  }}
                 ></AccordionSummary>
+
+                {/* </Draggable> */}
                 <AccordionDetails>
                   {jwtToken && (
                     <div className="mainContentMobile">
@@ -221,7 +256,7 @@ const App = (props) => {
                             : { overflowY: "auto" }
                         }
                         style={{
-                          width: userScreenWidth - 17,
+                          width: userScreenWidth,
                         }} /* ширину уже раскрывшегося карда пишу сдезь потому-что через makestyles не сетает*/
                         ref={refOfCard}
                       >
@@ -230,6 +265,7 @@ const App = (props) => {
                           initializing={props.initializing}
                           expanded={expanded}
                           setActiveStep={setActiveStep}
+                          setBackgroundScrollStop={setBackgroundScrollStop}
                         />
 
                         {props.initializing ? (
@@ -248,7 +284,6 @@ const App = (props) => {
                   {!jwtToken && null}
                 </AccordionDetails>
               </Accordion>
-              {/* </Draggable> */}
             </div>
             {/* <div className={classes.main}>
 
@@ -303,6 +338,9 @@ const App = (props) => {
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                     ref={refOfBookNow}
+                    onClick={() => {
+                      setBackgroundScrollStop(true)
+                    }}
                   ></AccordionSummary>
                   <AccordionDetails>
                     {jwtToken && (
@@ -328,6 +366,9 @@ const App = (props) => {
                                   initializing={props.initializing}
                                   expanded={expanded}
                                   setActiveStep={setActiveStep}
+                                  setBackgroundScrollStop={
+                                    setBackgroundScrollStop
+                                  }
                                 />
                               </div>
                             </div>
