@@ -48,10 +48,7 @@ const PassengerQuantity = ({ passengersqState, setPassengers, passengers }) => {
           alignItems="center"
         >
           <Grid item>
-            <span
-              onClick={onDecrease}
-              // style={{ "&:hover": { color: "white" } }}
-            >
+            <span onClick={onDecrease} style={{ marginRight: "5px" }}>
               <MinusIcon />
             </span>
           </Grid>
@@ -80,7 +77,7 @@ const PassengerQuantity = ({ passengersqState, setPassengers, passengers }) => {
             />
           </Grid>
           <Grid item>
-            <span onClick={onIncrease}>
+            <span onClick={onIncrease} style={{ marginLeft: "4px" }}>
               <PlusIcon />
             </span>
           </Grid>

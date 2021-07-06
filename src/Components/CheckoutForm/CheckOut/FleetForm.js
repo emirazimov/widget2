@@ -1,28 +1,28 @@
-import Button from "@material-ui/core/Button"
-import Grid from "@material-ui/core/Grid"
-import ListItem from "@material-ui/core/ListItem"
-import Paper from "@material-ui/core/Paper"
-import { makeStyles } from "@material-ui/core/styles"
-import Typography from "@material-ui/core/Typography"
-import Dialog from "@material-ui/core/Dialog"
-import DialogActions from "@material-ui/core/DialogActions"
-import React from "react"
-import Carousel from "react-material-ui-carousel"
-import { connect } from "react-redux"
-import { BackArrowIcon, ForwardArrowIcon } from "../../../assets/icons"
-import { Preloader } from "./../../Helpers/Preloader"
-import { setCarId } from "../../../Redux/form-reducer"
-import { AppBar, useMediaQuery } from "@material-ui/core"
-import Box from "@material-ui/core/Box"
+import Button from '@material-ui/core/Button'
+import Grid from '@material-ui/core/Grid'
+import ListItem from '@material-ui/core/ListItem'
+import Paper from '@material-ui/core/Paper'
+import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import React from 'react'
+import Carousel from 'react-material-ui-carousel'
+import { connect } from 'react-redux'
+import { BackArrowIcon, ForwardArrowIcon } from '../../../assets/icons'
+import { Preloader } from './../../Helpers/Preloader'
+import { setCarId } from '../../../Redux/form-reducer'
+import { AppBar, useMediaQuery } from '@material-ui/core'
+import Box from '@material-ui/core/Box'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: "#313159",
-    borderRadius: "8px",
-    paddingTop: "15px",
-    paddingLeft: "0px",
-    paddingBottom: "6px",
-    cursor: "pointer",
+    backgroundColor: '#313159',
+    borderRadius: '8px',
+    paddingTop: '15px',
+    paddingLeft: '0px',
+    paddingBottom: '6px',
+    cursor: 'pointer',
     // "&:hover": {
     //   backgroundColor: "red",
     // },
@@ -30,57 +30,57 @@ const useStyles = makeStyles((theme) => ({
   },
   contentContainer: {
     padding: theme.spacing(2),
-    height: "100%",
-    flexWrap: "nowrap",
+    height: '100%',
+    flexWrap: 'nowrap',
   },
   carContainer: {
-    overflowY: "scroll",
-    overflowX: "hidden",
+    overflowY: 'scroll',
+    overflowX: 'hidden',
 
-    "&::-webkit-scrollbar": {
-      width: "0.7em",
+    '&::-webkit-scrollbar': {
+      width: '0.7em',
     },
-    "&::-webkit-scrollbar-thumb": {
-      backgroundColor: "#3F3D4A",
-      borderRadius: "8px",
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: '#3F3D4A',
+      borderRadius: '8px',
     },
-    "&::-webkit-scrollbar-thumb:hover": {
-      background: "#555",
+    '&::-webkit-scrollbar-thumb:hover': {
+      background: '#555',
     },
   },
   priceBox: {
-    backgroundColor: "#851EDF",
+    backgroundColor: '#851EDF',
     padding: theme.spacing(1),
   },
   buttonGroup: {
     bottom: 15,
-    position: "absolute",
+    position: 'absolute',
 
-    padding: "10px 24px 0px 0",
+    padding: '10px 24px 0px 0',
     backgroundColor: theme.palette.background.paper,
   },
   carInfoCont: {
-    [theme.breakpoints.down("xs")]: {
-      alignItems: "center",
+    [theme.breakpoints.down('xs')]: {
+      alignItems: 'center',
       padding: theme.spacing(0),
     },
-    margin: "0px",
-    marginTop: "-10px",
-    width: "170px",
+    margin: '0px',
+    marginTop: '-10px',
+    width: '170px',
   },
   listRoot: {
-    opacity: "0.5",
-    "&:hover": { opacity: "1" },
+    opacity: '0.5',
+    '&:hover': { opacity: '1' },
   },
 
   active: {
-    "&.Mui-selected": {
-      backgroundColor: "#313159",
+    '&.Mui-selected': {
+      backgroundColor: '#313159',
     },
-    "&.Mui-selected:hover": {
-      backgroundColor: "#313159",
+    '&.Mui-selected:hover': {
+      backgroundColor: '#313159',
     },
-    opacity: "1",
+    opacity: '1',
   },
 }))
 
@@ -113,7 +113,7 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
     setCarCard(carCard)
   }, [carCard])
 
-  const isMobile = useMediaQuery("(max-width:650px)")
+  const isMobile = useMediaQuery('(max-width:650px)')
 
   return (
     <>
@@ -122,15 +122,15 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
       ) : (
         <Grid
           container
-          justify="center"
+          justify='center'
           style={{
-            height: isMobile ? "86%" : "89%",
-            paddingTop: isMobile ? "0px" : "0px",
+            height: isMobile ? '86%' : '89%',
+            paddingTop: isMobile ? '0px' : '0px',
           }}
         >
           <Grid
             container
-            direction="column"
+            direction='column'
             spacing={1}
             className={classes.contentContainer}
           >
@@ -142,11 +142,11 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
             > */}
               <Typography
                 style={{
-                  fontFamily: "Roboto",
+                  fontFamily: 'Roboto',
                   fontWeight: 500,
-                  color: "#FFFFFF",
-                  fontSize: "22px",
-                  lineHeight: "36px",
+                  color: '#FFFFFF',
+                  fontSize: '22px',
+                  lineHeight: '36px',
                 }}
               >
                 Select vehicle
@@ -156,9 +156,9 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
             <Grid
               item
               className={classes.carContainer}
-              style={{ paddingBottom: "10px" }}
+              style={{ paddingBottom: '10px' }}
             >
-              <Grid container direction="column" spacing={2}>
+              <Grid container direction='column' spacing={2}>
                 {cars.map((car, index) => (
                   <Grid item key={`${car.id}${car.name}`}>
                     <ListItem
@@ -178,64 +178,64 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
                     >
                       <Grid
                         container
-                        direction="row"
-                        justify="space-between"
-                        alignItems="center"
+                        direction='row'
+                        justify='space-between'
+                        alignItems='center'
                       >
                         <Grid
                           item
-                          style={{ marginLeft: "13px", marginBottom: "-2px" }}
+                          style={{ marginLeft: '13px', marginBottom: '-2px' }}
                         >
                           <Carousel
                             autoPlay={false}
-                            animation="slide"
+                            animation='slide'
                             navButtonsProps={{
                               style: {
-                                width: "1em",
-                                height: "1em",
+                                width: '1em',
+                                height: '1em',
                               },
                             }}
                             indicatorIconButtonProps={{
                               style: {
-                                "&:hover": {
-                                  "&$button": {
-                                    backgroundColor: "#10B7EC",
-                                    filter: "brightness(120%)",
-                                    opacity: "0.4",
+                                '&:hover': {
+                                  '&$button': {
+                                    backgroundColor: '#10B7EC',
+                                    filter: 'brightness(120%)',
+                                    opacity: '0.4',
                                   },
                                 },
-                                marginTop: "-80px",
+                                marginTop: '-80px',
                                 // marginBottom: "-30px",
-                                color: "grey",
+                                color: 'grey',
                               },
                             }}
                             activeIndicatorIconButtonProps={{
                               style: {
-                                color: "white",
-                                height: "10px",
+                                color: 'white',
+                                height: '10px',
                               },
                             }}
                             indicatorContainerProps={{
-                              style: { height: "0px" },
+                              style: { height: '0px' },
                             }}
                           >
                             {car.imageUrls.length !== 0 ? (
                               car.imageUrls.map((url) => (
                                 <span
                                   key={url.id}
-                                  variant="outlined"
-                                  color="primary"
+                                  variant='outlined'
+                                  color='primary'
                                   onClick={() => handleClickOpen(car.id)}
                                 >
                                   <div
                                     style={{
-                                      position: "absolute",
-                                      width: "75px",
-                                      height: "20px",
-                                      backgroundColor: "#313159",
-                                      borderBottomRightRadius: "10px",
-                                      fontSize: "13px",
-                                      paddingLeft: "12px",
+                                      position: 'absolute',
+                                      width: '75px',
+                                      height: '20px',
+                                      backgroundColor: '#313159',
+                                      borderBottomRightRadius: '10px',
+                                      fontSize: '13px',
+                                      paddingLeft: '12px',
                                     }}
                                   >
                                     or similar
@@ -243,12 +243,13 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
                                   <img
                                     src={url.path}
                                     style={{
-                                      width: "170px",
-                                      height: "127px",
-                                      borderRadius: "8px",
-                                      cursor: "zoom-in",
+                                      display: 'block',
+                                      width: !isMobile ? '170px' : '22vh',
+                                      height: !isMobile ? '127px' : '17vh',
+                                      borderRadius: '8px',
+                                      cursor: 'zoom-in',
                                     }}
-                                    alt="car"
+                                    alt='car'
                                   />
                                 </span>
                               ))
@@ -256,27 +257,27 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
                               <>
                                 <span
                                   style={{
-                                    position: "absolute",
-                                    width: "75px",
-                                    height: "20px",
-                                    backgroundColor: "#313159",
-                                    borderBottomRightRadius: "10px",
-                                    fontSize: "13px",
-                                    paddingLeft: "12px",
+                                    position: 'absolute',
+                                    width: '75px',
+                                    height: '20px',
+                                    backgroundColor: '#313159',
+                                    borderBottomRightRadius: '10px',
+                                    fontSize: '13px',
+                                    paddingLeft: '12px',
                                   }}
                                 >
                                   or similar
                                 </span>
                                 <img
                                   src={
-                                    "https://fl-1.cdn.flockler.com/embed/not-found.png"
+                                    'https://fl-1.cdn.flockler.com/embed/not-found.png'
                                   }
                                   style={{
-                                    width: "170px",
-                                    height: "120px",
-                                    borderRadius: "8px",
+                                    width: !isMobile ? '170px' : '22vh',
+                                    height: !isMobile ? '127px' : '17vh',
+                                    borderRadius: '8px',
                                   }}
-                                  alt="car"
+                                  alt='car'
                                 />
                               </>
                             )}
@@ -286,33 +287,33 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
                             <Dialog
                               open={open}
                               onClose={handleClose}
-                              aria-labelledby="alert-dialog-title"
-                              aria-describedby="alert-dialog-description"
+                              aria-labelledby='alert-dialog-title'
+                              aria-describedby='alert-dialog-description'
                             >
                               <DialogActions>
                                 <Carousel
                                   autoPlay={false}
-                                  animation="slide"
+                                  animation='slide'
                                   navButtonsProps={{
                                     style: {
-                                      width: "1em",
-                                      height: "1em",
+                                      width: '1em',
+                                      height: '1em',
                                     },
                                   }}
                                   indicatorIconButtonProps={{
                                     style: {
-                                      "&:hover": {
-                                        "& $button": {
-                                          backgroundColor: "#10B7EC",
-                                          filter: "brightness(120%)",
-                                          opacity: "0.4",
+                                      '&:hover': {
+                                        '& $button': {
+                                          backgroundColor: '#10B7EC',
+                                          filter: 'brightness(120%)',
+                                          opacity: '0.4',
                                         },
                                       },
                                     },
                                   }}
                                   activeIndicatorIconButtonProps={{
                                     style: {
-                                      color: "#10B7EC",
+                                      color: '#10B7EC',
                                     },
                                   }}
                                   indicatorContainerProps={{
@@ -324,11 +325,11 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
                                       <img
                                         src={url.path}
                                         style={{
-                                          width: "600px",
-                                          height: "400px",
-                                          borderRadius: "8px",
+                                          width: '600px',
+                                          height: '400px',
+                                          borderRadius: '8px',
                                         }}
-                                        alt="car"
+                                        alt='car'
                                         key={`${url.id}${url.path}`}
                                       />
                                     ))}
@@ -337,16 +338,19 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
                             </Dialog>
                           )}
                         </Grid>
-                        <Grid item style={{ width: "46.5%" }}>
+                        <Grid
+                          item
+                          style={{ width: !isMobile ? '46.5%' : '52%' }}
+                        >
                           <Grid
                             container
-                            direction="row"
+                            direction='row'
                             spacing={2}
                             className={classes.carInfoCont}
                           >
                             <Typography
-                              variant="body2"
-                              style={{ fontSize: "18px" }}
+                              variant='body2'
+                              style={{ fontSize: '18px' }}
                             >
                               {car.make} {car.model}
                             </Typography>
@@ -358,16 +362,16 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
 
                             <Grid
                               container
-                              justify="row"
-                              justify="space-between"
-                              alignItems="center"
+                              justify='row'
+                              justify='space-between'
+                              alignItems='center'
                             >
                               <Grid item>
                                 <Typography
                                   style={{
-                                    color: "white",
-                                    fontSize: "13px",
-                                    fontWeight: "400",
+                                    color: 'white',
+                                    fontSize: '13px',
+                                    fontWeight: '400',
                                   }}
                                 >
                                   Type
@@ -376,20 +380,20 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
                               <Grid item style={{ flexGrow: 1 }}>
                                 <Box
                                   style={{
-                                    marginTop: "13px",
-                                    backgroundColor: "transparent",
-                                    borderColor: "#736994",
-                                    borderStyle: "dashed",
-                                    borderWidth: "1px",
+                                    marginTop: '13px',
+                                    backgroundColor: 'transparent',
+                                    borderColor: '#736994',
+                                    borderStyle: 'dashed',
+                                    borderWidth: '1px',
                                   }}
                                 />
                               </Grid>
                               <Grid item>
                                 <Typography
                                   style={{
-                                    color: "white",
-                                    fontSize: "13px",
-                                    fontWeight: "400",
+                                    color: 'white',
+                                    fontSize: '13px',
+                                    fontWeight: '400',
                                   }}
                                 >
                                   {car.type}
@@ -399,16 +403,16 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
 
                             <Grid
                               container
-                              justify="row"
-                              justify="space-between"
-                              alignItems="center"
+                              justify='row'
+                              justify='space-between'
+                              alignItems='center'
                             >
                               <Grid item>
                                 <Typography
                                   style={{
-                                    color: "white",
-                                    fontSize: "13px",
-                                    fontWeight: "400",
+                                    color: 'white',
+                                    fontSize: '13px',
+                                    fontWeight: '400',
                                   }}
                                 >
                                   Capacity
@@ -417,20 +421,20 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
                               <Grid item style={{ flexGrow: 1 }}>
                                 <Box
                                   style={{
-                                    marginTop: "13px",
-                                    backgroundColor: "transparent",
-                                    borderColor: "#736994",
-                                    borderStyle: "dashed",
-                                    borderWidth: "1px",
+                                    marginTop: '13px',
+                                    backgroundColor: 'transparent',
+                                    borderColor: '#736994',
+                                    borderStyle: 'dashed',
+                                    borderWidth: '1px',
                                   }}
                                 />
                               </Grid>
                               <Grid item>
                                 <Typography
                                   style={{
-                                    color: "white",
-                                    fontSize: "13px",
-                                    fontWeight: "400",
+                                    color: 'white',
+                                    fontSize: '13px',
+                                    fontWeight: '400',
                                   }}
                                 >
                                   {car.capacity}
@@ -438,13 +442,13 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
                               </Grid>
                             </Grid>
 
-                            <Grid container justify="row">
+                            <Grid container justify='row'>
                               <Grid item>
                                 <Typography
                                   style={{
-                                    color: "white",
-                                    fontSize: "12px",
-                                    fontWeight: "400",
+                                    color: 'white',
+                                    fontSize: '12px',
+                                    fontWeight: '400',
                                   }}
                                 >
                                   Color
@@ -453,20 +457,20 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
                               <Grid item style={{ flexGrow: 1 }}>
                                 <Box
                                   style={{
-                                    marginTop: "13px",
-                                    backgroundColor: "transparent",
-                                    borderColor: "#736994",
-                                    borderStyle: "dashed",
-                                    borderWidth: "1px",
+                                    marginTop: '13px',
+                                    backgroundColor: 'transparent',
+                                    borderColor: '#736994',
+                                    borderStyle: 'dashed',
+                                    borderWidth: '1px',
                                   }}
                                 />
                               </Grid>
                               <Grid item>
                                 <Typography
                                   style={{
-                                    color: "white",
-                                    fontSize: "13px",
-                                    fontWeight: "400",
+                                    color: 'white',
+                                    fontSize: '13px',
+                                    fontWeight: '400',
                                   }}
                                 >
                                   white
@@ -474,13 +478,13 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
                               </Grid>
                             </Grid>
 
-                            <Grid container justify="row">
+                            <Grid container justify='row'>
                               <Grid item>
                                 <Typography
                                   style={{
-                                    color: "white",
-                                    fontSize: "12px",
-                                    fontWeight: "400",
+                                    color: 'white',
+                                    fontSize: '12px',
+                                    fontWeight: '400',
                                   }}
                                 >
                                   Amount
@@ -489,20 +493,20 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
                               <Grid item style={{ flexGrow: 1 }}>
                                 <Box
                                   style={{
-                                    marginTop: "13px",
-                                    backgroundColor: "transparent",
-                                    borderColor: "#736994",
-                                    borderStyle: "dashed",
-                                    borderWidth: "1px",
+                                    marginTop: '13px',
+                                    backgroundColor: 'transparent',
+                                    borderColor: '#736994',
+                                    borderStyle: 'dashed',
+                                    borderWidth: '1px',
                                   }}
                                 />
                               </Grid>
                               <Grid item>
                                 <Typography
                                   style={{
-                                    color: "white",
-                                    fontSize: "16px",
-                                    fontWeight: "500",
+                                    color: 'white',
+                                    fontSize: '16px',
+                                    fontWeight: '500',
                                   }}
                                 >
                                   ${car.price}
@@ -534,24 +538,24 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
           > */}
             <Grid
               container
-              direction="row"
-              alignItems="center"
-              justify="center"
+              direction='row'
+              alignItems='center'
+              justify='center'
               spacing={1}
               className={classes.buttonGroup}
             >
               <Grid item xs={6}>
                 <Button
-                  variant="contained"
-                  color="primary"
+                  variant='contained'
+                  color='primary'
                   fullWidth
                   onClick={back}
                   startIcon={<BackArrowIcon />}
                   style={{
-                    height: "50px",
-                    borderRadius: "8px",
-                    backgroundColor: "#1B1837",
-                    textTransform: "none",
+                    height: '50px',
+                    borderRadius: '8px',
+                    backgroundColor: '#1B1837',
+                    textTransform: 'none',
                   }}
                 >
                   Back
@@ -560,19 +564,19 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
 
               <Grid item xs={6}>
                 <Button
-                  variant="contained"
+                  variant='contained'
                   fullWidth
                   onClick={() => {
                     next()
                     setCarId(carCard)
                   }}
-                  color="primary"
+                  color='primary'
                   endIcon={<ForwardArrowIcon />}
                   disabled={carCard ? false : true}
                   style={{
-                    height: "50px",
-                    borderRadius: "8px",
-                    textTransform: "none",
+                    height: '50px',
+                    borderRadius: '8px',
+                    textTransform: 'none',
                   }}
                 >
                   Next

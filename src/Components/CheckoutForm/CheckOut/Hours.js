@@ -57,7 +57,7 @@ const Hours = ({
           alignItems="center"
         >
           <Grid item>
-            <span onClick={onDecrease}>
+            <span onClick={onDecrease} style={{ marginRight: "5px" }}>
               <MinusIcon />
             </span>
           </Grid>
@@ -86,7 +86,7 @@ const Hours = ({
             />
           </Grid>
           <Grid item>
-            <span onClick={onIncrease}>
+            <span onClick={onIncrease} style={{ marginLeft: "4px" }}>
               <PlusIcon />
             </span>
           </Grid>
