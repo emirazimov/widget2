@@ -82,9 +82,12 @@
   background: #c5cde3;
 }
 .ant-picker-dropdown {
-  /* position: sticky; */
+  position: absolute;
 }
 .ant-picker-panel {
 }
 .ant-picker-panel-content {
+}
+.scrolling {
+  position: relative;
 }

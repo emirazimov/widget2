@@ -254,6 +254,8 @@ const AdressFormwithoutReactMemo = ({
   getCompanyCars,
   setFormData,
   formData,
+  backgroundScrollStopForTimePicker,
+  setBackgroundScrollStopForTimePicker,
 }) => {
   const classes = useStyles()
   console.log("AdressFrom")
@@ -662,25 +664,41 @@ const AdressFormwithoutReactMemo = ({
                       >
                         <ClockIcon />
                       </div>
-                      <TimeInputControl
-                        name="orderStartTime"
-                        use12Hours
-                        placeholder="Pick up Time"
-                        format="h:mm a"
-                        allowClear={false}
-                        inputReadOnly={isMobile ? true : false}
-                        style={{
-                          zIndex: "10",
-                          paddingLeft: "36px",
-                          border:
-                            redBorderOnSubmitForTime && "1px solid #db5858",
-                          // backgroundColor: "#191929",
-                          // width: "190px",
-                          // height: "41px",
-                          // borderRadius: "9px",
-                        }}
-                      />
-
+                      <div className="scrolling">
+                        <TimeInputControl
+                          getPopupContainer={(trigger) => trigger.parentNode}
+                          name="orderStartTime"
+                          use12Hours
+                          placeholder="Pick up Time"
+                          format="h:mm A"
+                          allowClear={false}
+                          inputReadOnly={isMobile ? true : false}
+                          needsConfirmation={false}
+                          showNow={false}
+                          // onChange={() => {
+                          //   setBackgroundScrollStopForTimePicker(true)
+                          // }}
+                          // onClick={() => {
+                          //   setBackgroundScrollStopForTimePicker(true)
+                          // }}
+                          // onOk={() => {
+                          //   setBackgroundScrollStopForTimePicker(false)
+                          // }}
+                          popupStyle={{
+                            color: "red",
+                          }}
+                          style={{
+                            zIndex: "10",
+                            paddingLeft: "36px",
+                            border:
+                              redBorderOnSubmitForTime && "1px solid #db5858",
+                            // backgroundColor: "#191929",
+                            // width: "190px",
+                            // height: "41px",
+                            // borderRadius: "9px",
+                          }}
+                        />
+                      </div>
                       {/* <TimeInputControl
                         // value={selectedDate}
                         // onChange={handleDateChangeFunc}
@@ -755,7 +773,7 @@ const AdressFormwithoutReactMemo = ({
                     checked={hourly}
                     onClick={() => {
                       setHourly(!hourly)
-                      hourly ? setBookingType(2) : setBookingType(1)
+                      // hourly ? setBookingType(2) : setBookingType(1)
                     }}
                   />
                 </Grid>

@@ -44,6 +44,10 @@ const App = (props) => {
   const refOfCard = useRef(null)
   const [heightOfBookNow, setHeightOfBookNow] = React.useState(0)
   const [backgroundScrollStop, setBackgroundScrollStop] = React.useState(false)
+  const [
+    backgroundScrollStopForTimePicker,
+    setBackgroundScrollStopForTimePicker,
+  ] = React.useState(false)
   const [draggable, setDraggable] = React.useState(false)
 
   const refOfBookNow = useRef(null)
@@ -78,6 +82,7 @@ const App = (props) => {
     setTimeout(() => {
       setDisabled(false)
     }, 120)
+
     setHeightOfCard(refOfCard.current.clientHeight)
 
     {
@@ -125,6 +130,7 @@ const App = (props) => {
     setTimeout(() => {
       setDisabled(false)
     }, 80)
+
     setHeightOfCard(refOfCard.current.clientHeight)
     {
       /*Тот же обратчик только для иконки Book Now! с пульсацией до раскрытой иконке*/
@@ -154,9 +160,9 @@ const App = (props) => {
 
   React.useEffect(() => {
     if (backgroundScrollStop) {
-      document.body.style.overflowY = "hidden"
+      document.body.style.overflow = "hidden"
     } else {
-      document.body.style.overflowY = "unset"
+      document.body.style.overflow = "unset"
     }
   }, [backgroundScrollStop])
 
@@ -206,6 +212,21 @@ const App = (props) => {
           <CssBaseline />
           <ThemeProvider theme={theme}>
             <div className={classes.mainMobile}>
+              {/* <Draggable
+                onStart={disableAccordionButtonMobile}
+                onDrag={handleDragForMobile}
+                onStop={enableAccordionButtonMobile}
+                position={position.current}
+                // disabled={draggable ? true : false}
+                cancel="#mainest "
+                onClick={() => {
+                  console.log("hello drag")
+                }}
+                // bounds="body"
+                // handle="#panel1a-header"
+                // allowAnyClick={false}
+                // enableUserSelectHack={false}
+              > */}
               <Accordion
                 elevation={0}
                 disabled={disabled}
@@ -220,35 +241,39 @@ const App = (props) => {
                 onChange={handleChange("panel1")}
                 id="panel1a-header1"
               >
-                {/* <Draggable
-                  // onStart={disableAccordionButtonMobile}
-                  onDrag={handleDragForMobile}
-                  onStop={enableAccordionButtonMobile}
-                  position={position.current}
-                  disabled={false}
-                  // bounds="body"
-                  // handle="#panel1a-header"
-                  // allowAnyClick={false}
-                  // enableUserSelectHack={false}
-                > */}
-
                 <AccordionSummary
-                  className={classes.accordion}
+                  className={classes.accordionMobile}
                   expandIcon={<BookinglaneIconForMobile />}
                   aria-controls="panel1a-content"
-                  id="panel1a-header"
+                  id="panel1a-header-mobile"
                   ref={refOfBookNow}
                   onClick={() => {
                     setBackgroundScrollStop(true)
                   }}
-                ></AccordionSummary>
-
-                {/* </Draggable> */}
+                >
+                  {/* <div
+                      id="mainest"
+                      className={classes.accordionMobile}
+                      style={{
+                        // position: "absolute",
+                        // zIndex: "2",
+                        width: "100px",
+                        height: "100px",
+                        background: "green",
+                        marginTop: "-50px",
+                        marginLeft: "34px",
+                      }}
+                    ></div> */}
+                </AccordionSummary>
                 <AccordionDetails>
                   {jwtToken && (
                     <div className="mainContentMobile">
                       <Card
-                        className={classes.contentMobile}
+                        className={
+                          backgroundScrollStopForTimePicker
+                            ? classes.contentMobileWithoutScroll
+                            : classes.contentMobile
+                        }
                         style={{ bottom: userScreenHeight - yOrdinate }}
                         style={
                           activeStep === 1
@@ -276,6 +301,12 @@ const App = (props) => {
                             setActiveStep={setActiveStep}
                             nextStep={nextStep}
                             backStep={backStep}
+                            backgroundScrollStopForTimePicker={
+                              backgroundScrollStopForTimePicker
+                            }
+                            setBackgroundScrollStopForTimePicker={
+                              setBackgroundScrollStopForTimePicker
+                            }
                           />
                         ) : null}
                       </Card>
@@ -284,7 +315,9 @@ const App = (props) => {
                   {!jwtToken && null}
                 </AccordionDetails>
               </Accordion>
+              {/* </Draggable> */}
             </div>
+
             {/* <div className={classes.main}>
 
               <Button className={classes.mobileButton} variant="outlined" color="primary" onClick={handleClickOpen}>

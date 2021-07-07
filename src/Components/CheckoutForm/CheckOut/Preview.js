@@ -424,7 +424,6 @@ const Preview = ({
                   }}
                 >
                   {formData.orderStartDate}
-                  {console.log(formData)}
                 </Typography>
               </Grid>
             </Grid>
@@ -465,7 +464,8 @@ const Preview = ({
               container
               direction="row"
               justify="space-between"
-              alignItems="center"
+              alignItems="flex-start"
+              wrap="nowrap"
             >
               <Grid item>
                 <Typography style={{ color: "white", fontSize: "16px" }}>
@@ -489,6 +489,8 @@ const Preview = ({
                     wordWrap: "break-word",
                     color: "white",
                     fontSize: "16px",
+                    width: "300px",
+                    textAlign: "end",
                   }}
                 >
                   {formData.orderAddressDetails[0].rideCheckPoint}
@@ -502,6 +504,7 @@ const Preview = ({
               direction="row"
               justify="space-between"
               alignItems="center"
+              wrap="nowrap"
             >
               <Grid item>
                 <Typography style={{ color: "white", fontSize: "16px" }}>
@@ -525,6 +528,8 @@ const Preview = ({
                     wordWrap: "break-word",
                     color: "white",
                     fontSize: "16px",
+                    width: "300px",
+                    textAlign: "end",
                   }}
                 >
                   {

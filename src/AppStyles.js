@@ -69,6 +69,19 @@ const useStyles = makeStyles((theme) => ({
       left: "10px",
     },
   },
+  accordionMobile: {
+    width: "150px",
+    height: "150px",
+    bottom: "50px",
+    // left: "90px",
+    background: "none",
+    padding: theme.spacing(1),
+    position: "fixed",
+    // zIndex: "1",
+    [theme.breakpoints.down("xs")]: {
+      left: "10px",
+    },
+  },
   content: {
     position: "absolute",
     cursor: "default",
@@ -115,7 +128,7 @@ const useStyles = makeStyles((theme) => ({
   contentMobile: {
     position: "fixed",
     cursor: "default",
-
+    height: "100%",
     // borderTopRightRadius: '30px',
     // borderTopLeftRadius: '30px',
     // borderBottomRight: '0px',
@@ -137,6 +150,18 @@ const useStyles = makeStyles((theme) => ({
       width: userScreenWidth,
       height: userScreenHeight,
     },
+    // left: '-20px',
+  },
+  contentMobileWithoutScroll: {
+    position: "fixed",
+    cursor: "default",
+    height: "100%",
+    // borderTopRightRadius: '30px',
+    // borderTopLeftRadius: '30px',
+    // borderBottomRight: '0px',
+    // borderBottomLeft: '0px',
+    bottom: "1px",
+    overflowY: "none",
     // left: '-20px',
   },
   companyProfile: {
