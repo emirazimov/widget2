@@ -62,8 +62,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "10px",
     marginTop: theme.spacing(1),
     padding: 0,
-    width: "90%",
+    width: "95%",
     height: "85%",
+
     cursor: "pointer",
 
     "&:hover": {
@@ -74,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
   carFont: {
     textTransform: "uppercase",
     fontSize: "12px",
-    marginLeft: "-10px",
+    marginLeft: "-5px",
   },
   carImageContainer: {
     width: "90px",
@@ -93,11 +94,13 @@ const useStyles = makeStyles((theme) => ({
     msUserSelect: "none",
   },
   carImageStylesForBiggerTypeOfImage: {
-    width: "84%",
+    width: "90%",
     height: "40px",
     objectFit: "contain",
-    padding: "5px",
-    paddingTop: "12px",
+    padding: "2px",
+    paddingLeft: "6px",
+    paddingBottom: '5px',
+    paddingTop: "10px",
     userDrag: "none",
     userSelect: "none",
     mozUserSelect: "none",
@@ -111,7 +114,7 @@ const useStyles = makeStyles((theme) => ({
   },
   preferences: {
     color: "white",
-    marginLeft: "13px",
+    marginLeft: "10px",
     fontSize: "14px",
     marginTop: "-5px",
   },
@@ -809,6 +812,7 @@ const AdressFormwithoutReactMemo = ({
                     <Grid
                       container
                       direction="row"
+                      alignItems="center"
                       style={{ paddingLeft: "-12px" }}
                     >
                       <HourlyIcon></HourlyIcon>

@@ -91,14 +91,14 @@ const CompanyProfile = ({
             alt='companyLogo'
           />
         </Grid>
-        <Grid item xs={6} md={8}>
+        <Grid item xs={7} md={8}>
           <Typography className={classes.companyName}>
             {profile.companyName}
           </Typography>
         </Grid>
         <Grid item>
           <span
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: 'pointer', marginRight: '6px'}}
             onClick={() => {
               setExpanded(false)
               setActiveStep(0)

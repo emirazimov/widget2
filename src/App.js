@@ -35,7 +35,7 @@ const App = (props) => {
   const classes = useStyles(props)
 
   const [activeStep, setActiveStep] = React.useState(0)
-  let position = React.useRef({ x: 0, y: 0 })
+  let position = React.useRef({x: userScreenWidth -300, y: 10})
   const [expanded, setExpanded] = React.useState(false)
   const [disabled, setDisabled] = React.useState(false)
   const [disabledWidget, setDisabledWidget] = React.useState(false)
@@ -115,8 +115,8 @@ const App = (props) => {
     if (xOrdinate + 300 > userScreenWidth) {
       position.current.x = userScreenWidth - 300
     }
-    if (yOrdinate - 180 < -userScreenHeight) {
-      position.current.y = -userScreenHeight + 220
+    if (yOrdinate - 215 < -userScreenHeight) {
+      position.current.y = -userScreenHeight + 240
     }
 
     if (yOrdinate > 0) {
@@ -175,7 +175,7 @@ const App = (props) => {
     if (!expanded)
       setTimeout(() => {
         setDisabled(true)
-      }, 150)
+      }, 120)
   }
   const handleDragForMobile = (e, ui) => {
     position.current.x = ui.x
@@ -183,7 +183,7 @@ const App = (props) => {
     if (!expanded)
       setTimeout(() => {
         setDisabled(true)
-      }, 150)
+      }, 120)
   }
 
   const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1)
@@ -366,7 +366,7 @@ const App = (props) => {
                   onChange={handleChange("panel1")}
                 >
                   <AccordionSummary
-                    className={classes.accordion}
+                    className={classes.accordionIpad}
                     expandIcon={<BookinglaneIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
@@ -379,7 +379,7 @@ const App = (props) => {
                     {jwtToken && (
                       <div className="mainContent">
                         <Card
-                          className={classes.content}
+                          className={classes.contentIpad}
                           style={{ bottom: userScreenHeight - yOrdinate }}
                           style={
                             activeStep === 1
@@ -430,7 +430,8 @@ const App = (props) => {
                   onDrag={handleDrag}
                   onStop={enableAccordionButton}
                   position={position.current}
-                  defaultPosition={{ x: 350, y: -10 }}
+                  // defaultPosition={{ x: userScreenWidth, y: 25 }}
+                  
                   // disabled={false}
                   // bounds="body"
                   handle=".companyProfileClassForDrag, #panel1a-header"

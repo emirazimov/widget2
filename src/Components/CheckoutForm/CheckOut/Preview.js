@@ -24,13 +24,13 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     paddingTop: "8px",
     paddingBottom: "8px",
-
     overflow: "visible",
   },
   carInfoCont: {
     [theme.breakpoints.down("xs")]: {
       alignItems: "center",
-      padding: theme.spacing(2),
+      // padding: theme.spacing(2),
+      paddingRight: '16px',
     },
   },
   priceBox: {
@@ -96,9 +96,9 @@ const Preview = ({
       <Directions
         destinations={formData.orderAddressDetails}
         setDistance={setDistance}
-        style={{ height: "250px" }}
+        // style={{ height: "250px" }}
       />
-      <Grid container justify="center">
+      <Grid container justify="center" >
         <Grid
           container
           direction="column"
@@ -108,9 +108,10 @@ const Preview = ({
           <Grid
             item
             style={{
-              height: "135px",
-              paddingRight: "14.5px",
+              // height: "135px",
+              paddingRight: !isMobile ? "14.5px" : '0px',
               marginTop: "10px",
+              marginBottom: '5px'
             }}
           >
             <Grid
@@ -118,8 +119,9 @@ const Preview = ({
               direction="row"
               justify="space-between"
               alignItems="center"
+              
             >
-              <Grid item>
+              <Grid item style={{width: '47%'}}>
                 <Carousel
                   autoPlay={false}
                   animation="slide"
@@ -160,9 +162,10 @@ const Preview = ({
                             width: "75px",
                             height: "20px",
                             backgroundColor: "#313159",
+                            borderTopLeftRadius: "6px",
                             borderBottomRightRadius: "10px",
                             fontSize: "13px",
-                            paddingLeft: "12px",
+                            paddingLeft: "10px",
                           }}
                         >
                           or similar
@@ -170,8 +173,8 @@ const Preview = ({
                         <img
                           src={url.path}
                           style={{
-                            width: "170px",
-                            height: "120px",
+                            width: !isMobile ? '170px' : '100%',
+                            height: !isMobile ? '127px' : '116px',
                             borderRadius: "8px",
                             cursor: "zoom-in",
                           }}
@@ -200,8 +203,8 @@ const Preview = ({
                           "https://fl-1.cdn.flockler.com/embed/not-found.png"
                         }
                         style={{
-                          width: "170px",
-                          height: "120px",
+                          width: !isMobile ? '170px' : '100%',
+                          height: !isMobile ? '127px' : '116px',
                           borderRadius: "8px",
                         }}
                         alt="car"
@@ -210,7 +213,7 @@ const Preview = ({
                   )}
                 </Carousel>
               </Grid>
-              <Grid item style={{ width: "45%" }}>
+              <Grid item style={{ width: "47%" }}>
                 <Grid
                   container
                   direction="column"
@@ -392,12 +395,13 @@ const Preview = ({
               </Grid>
             </Grid>
           </Grid>
-          <Grid item>
+          <Grid item >
             <Grid
               container
               direction="row"
               justify="space-between"
               alignItems="center"
+              
             >
               <Grid item>
                 <Typography style={{ color: "white", fontSize: "16px" }}>
@@ -497,7 +501,8 @@ const Preview = ({
                     wordWrap: "break-word",
                     color: "white",
                     fontSize: "16px",
-                    width: "300px",
+                    marginLeft: '20px',
+                    width: "93.30%",
                     textAlign: "end",
                   }}
                 >
@@ -536,7 +541,8 @@ const Preview = ({
                     wordWrap: "break-word",
                     color: "white",
                     fontSize: "16px",
-                    width: "300px",
+                    marginLeft: '20px',
+                    width: "92.80%",
                     textAlign: "end",
                   }}
                 >

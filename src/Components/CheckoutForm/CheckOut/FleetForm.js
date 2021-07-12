@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
   contentContainer: {
     padding: theme.spacing(2),
+    paddingRight: theme.spacing(1.5),
     height: '100%',
     flexWrap: 'nowrap',
   },
@@ -67,6 +68,15 @@ const useStyles = makeStyles((theme) => ({
     margin: '0px',
     marginTop: '-10px',
     width: '170px',
+  },
+  carInfoContForMobile: {
+    [theme.breakpoints.down('xs')]: {
+      alignItems: 'center',
+      padding: theme.spacing(0),
+    },
+    margin: '0px',
+    marginTop: '-10px',
+    width: '100%',
   },
   listRoot: {
     opacity: '0.5',
@@ -184,7 +194,7 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
                       >
                         <Grid
                           item
-                          style={{ marginLeft: '13px', marginBottom: '-2px' }}
+                          style={{ marginLeft: '13px', marginBottom: '-2px', width: '45.70%' }}
                         >
                           <Carousel
                             autoPlay={false}
@@ -244,8 +254,8 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
                                     src={url.path}
                                     style={{
                                       display: 'block',
-                                      width: !isMobile ? '170px' : '22vh',
-                                      height: !isMobile ? '127px' : '17vh',
+                                      width: !isMobile ? '170px' : '100%',
+                                      height: !isMobile ? '127px' : '116px',
                                       borderRadius: '8px',
                                       cursor: 'zoom-in',
                                     }}
@@ -273,8 +283,8 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
                                     'https://fl-1.cdn.flockler.com/embed/not-found.png'
                                   }
                                   style={{
-                                    width: !isMobile ? '170px' : '22vh',
-                                    height: !isMobile ? '127px' : '17vh',
+                                    width: !isMobile ? '170px' : '100%',
+                                    height: !isMobile ? '127px' : '116px',
                                     borderRadius: '8px',
                                   }}
                                   alt='car'
@@ -340,13 +350,13 @@ const FleetForm = React.memo(({ cars, isFetching, back, next, setCarId }) => {
                         </Grid>
                         <Grid
                           item
-                          style={{ width: !isMobile ? '46.5%' : '52%' }}
+                          style={{ width: !isMobile ? '46.5%' : '45.70%' }}
                         >
                           <Grid
                             container
                             direction='row'
                             spacing={2}
-                            className={classes.carInfoCont}
+                            className={!isMobile ? classes.carInfoCont : classes.carInfoContForMobile}
                           >
                             <Typography
                               variant='body2'
