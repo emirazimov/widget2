@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
-import { getCompanyProfile } from '../../Redux/company-profile-reducer'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
-import { CloseWidgetIcon } from '../../assets/icons'
-import Divider from '@material-ui/core/Divider'
-import { isMobile } from 'react-device-detect'
-import { Preloader } from '../Helpers/Preloader'
-import AppBar from '@material-ui/core/AppBar'
+import React, { useEffect } from "react"
+import { connect } from "react-redux"
+import { getCompanyProfile } from "../../Redux/company-profile-reducer"
+import Grid from "@material-ui/core/Grid"
+import Typography from "@material-ui/core/Typography"
+import { makeStyles } from "@material-ui/core/styles"
+import { CloseWidgetIcon } from "../../assets/icons"
+import Divider from "@material-ui/core/Divider"
+import { isMobile } from "react-device-detect"
+import { Preloader } from "../Helpers/Preloader"
+import AppBar from "@material-ui/core/AppBar"
 
 const useStyles = makeStyles((theme) => ({
   companyContainer: {
@@ -16,23 +16,40 @@ const useStyles = makeStyles((theme) => ({
     // position: 'fixed',
   },
   companyLogo: {
-    borderRadius: '100px',
-    width: '55px',
-    height: '55px',
-    marginLeft: '15px',
-    userDrag: 'none',
-    userSelect: 'none',
-    mozUserSelect: 'none',
-    webkitUserDrag: 'none',
-    webkitUserSelect: 'none',
-    msUserSelect: 'none',
+    borderRadius: "100px",
+    width: "55px",
+    height: "55px",
+    marginLeft: "15px",
+    userDrag: "none",
+    userSelect: "none",
+    mozUserSelect: "none",
+    webkitUserDrag: "none",
+    webkitUserSelect: "none",
+    msUserSelect: "none",
   },
   companyName: {
-    fontFamily: 'Roboto',
-    fontWeight: '700',
-    color: 'white',
-    fontSize: '24px',
-    textTransform: 'none',
+    fontFamily: "Roboto",
+    fontWeight: "700",
+    color: "white",
+    fontSize: "24px",
+    textTransform: "none",
+  },
+  closeIcon: {
+    textAlign: "center",
+    verticalAlign: "sub",
+    width: "28px",
+    height: "28px",
+    paddingTop: "7px",
+    "&:hover": {
+      textAlign: "center",
+      width: "28px",
+      height: "28px",
+      paddingTop: "7px",
+      borderRadius: "20px",
+      background: "#2E2E98",
+      marginRight: "10px",
+      transition: "0.2s",
+    },
   },
 }))
 
@@ -47,7 +64,7 @@ const CompanyProfile = ({
 }) => {
   const classes = useStyles()
 
-  const jwtToken = localStorage.getItem('Authorization')
+  const jwtToken = localStorage.getItem("Authorization")
 
   useEffect(() => {
     if (jwtToken) {
@@ -75,46 +92,47 @@ const CompanyProfile = ({
             </Grid>
                 <Divider orientation='horizontal' variant='fullWidth' />
             </> : */}
-      {/* {initializing ? ( */}
-
-      <Grid
-        container
-        direction='row'
-        justify='space-between'
-        alignItems='center'
-        className={classes.companyContainer}
-      >
-        <Grid item>
-          <img
-            src={profile.companyLogoPath}
-            className={classes.companyLogo}
-            alt='companyLogo'
-          />
-        </Grid>
-        <Grid item xs={6} md={8}>
-          <Typography className={classes.companyName}>
-            {profile.companyName}
-          </Typography>
-        </Grid>
-        <Grid item>
-          <span
-            style={{ cursor: 'pointer' }}
-            onClick={() => {
-              setExpanded(false)
-              setActiveStep(0)
-              setBackgroundScrollStop(false)
-            }}
+      {initializing ? (
+        <>
+          <Grid
+            container
+            direction="row"
+            justify="space-between"
+            alignItems="center"
+            className={classes.companyContainer}
           >
-            <CloseWidgetIcon />
-          </span>
-        </Grid>
-      </Grid>
+            <Grid item>
+              <img
+                src={profile.companyLogoPath}
+                className={classes.companyLogo}
+                alt="companyLogo"
+              />
+            </Grid>
+            <Grid item xs={7} md={7}>
+              <Typography className={classes.companyName}>
+                {profile.companyName}
+              </Typography>
+            </Grid>
+            <Grid item>
+              <div
+                style={{ cursor: "pointer", marginRight: "6px" }}
+                className={classes.closeIcon}
+                onClick={() => {
+                  setExpanded()
+                  setActiveStep(0)
+                  setBackgroundScrollStop(false)
+                }}
+              >
+                <CloseWidgetIcon />
+              </div>
+            </Grid>
+          </Grid>
 
-      <Divider orientation='horizontal' variant='fullWidth' />
-
-      {/* ) : (
+          <Divider orientation="horizontal" variant="fullWidth" />
+        </>
+      ) : (
         <Preloader />
-      )} */}
+      )}
     </>
   )
 }

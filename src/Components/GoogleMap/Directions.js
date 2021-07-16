@@ -1,3 +1,4 @@
+import { useMediaQuery } from "@material-ui/core"
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { GoogleApiWrapper, Map } from 'google-maps-react';
@@ -8,11 +9,19 @@ import MapStyles from './mapStyles';
 
 const useStyles = makeStyles((theme) => ({
     mapContainer: {
-        width: '100%',
-        height: '300px',
+        width: '92.25%',
+        marginLeft: '17px',
+        height: '250px',
+        position: 'relative'
+    },
+    mapContainerForMobile: {
+        width: '90.70%',
+        marginLeft: '17px',
+        height: '250px',
         position: 'relative'
     },
 }));
+
 
 const Directions = ({ destinations, setDistance, ...props }) => {
     const classes = useStyles();
@@ -56,10 +65,13 @@ const Directions = ({ destinations, setDistance, ...props }) => {
         });
     }
 
+    
+ const isMobile = useMediaQuery("(max-width:650px)")
+
     return (
         <>
             <Grid container direction='column'>
-                <Grid item className={classes.mapContainer}>
+                <Grid item className={!isMobile ? classes.mapContainer : classes.mapContainerForMobile}>
                     <Map
                         google={props.google}
                         styles={MapStyles}

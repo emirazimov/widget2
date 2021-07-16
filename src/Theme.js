@@ -33,7 +33,7 @@ export default createMuiTheme({
   overrides: {
     MuiTextField: {
       root: {
-        borderRadius: "8px",
+        borderRadius: "12px",
         backgroundColor: "#3F3D4A",
       },
     },
@@ -54,7 +54,7 @@ export default createMuiTheme({
       color: "#BABABA",
     },
     body2: {
-      fontFamily: "Inter",
+      fontFamily: "Roboto",
       textTransform: "none",
       fontWeight: "400",
       fontSize: "1.2rem",

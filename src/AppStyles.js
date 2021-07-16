@@ -70,11 +70,23 @@ const useStyles = makeStyles((theme) => ({
       left: "10px",
     },
   },
-  accordionMobile: {
+  accordionIpad: {
     width: "150px",
     height: "150px",
     bottom: "50px",
-    // left: "90px",
+    left: userScreenWidth - 200,
+    background: "none",
+    padding: theme.spacing(1),
+    position: "fixed",
+    [theme.breakpoints.down("xs")]: {
+      left: "10px",
+    },
+  },
+  accordionMobile: {
+    width: "150px",
+    height: "150px",
+    bottom: "5px",
+    marginLeft: userScreenWidth - 180,
     background: "none",
     padding: theme.spacing(1),
     position: "fixed",
@@ -111,6 +123,34 @@ const useStyles = makeStyles((theme) => ({
       height: userScreenHeight,
     },
     // left: '-20px',
+  },
+  contentIpad: {
+    position: "absolute",
+    cursor: "default",
+    height: "80vh",
+    width: "436px",
+    // borderTopRightRadius: '30px',
+    // borderTopLeftRadius: '30px',
+    // borderBottomRight: '0px',
+    // borderBottomLeft: '0px',
+    left: userScreenWidth - 450,
+    bottom: "16px",
+    overflowY: "scroll",
+    "&::-webkit-scrollbar": {
+      width: "0.65em",
+      top: "100px",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "grey",
+      borderRadius: "40px",
+    },
+    "&::-webkit-scrollbar-thumb:hover": {
+      background: "#c5cde3",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: userScreenWidth,
+      height: userScreenHeight,
+    },
   },
   checkOut: {
     overflowY: "scroll",
