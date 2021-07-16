@@ -44,8 +44,8 @@ export const Ticket = () => (
     style={{ marginLeft: "-4px" }}
   >
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M18.0156 11.8957L8.0198 1.89995C7.79447 1.67462 7.42914 1.67462 7.20382 1.89995C7.09504 2.00873 6.9575 2.265 6.93256 2.73516C6.89482 3.44651 6.73274 4.81897 5.77585 5.77585C4.81897 6.73274 3.44651 6.89482 2.73516 6.93256C2.265 6.9575 2.00873 7.09504 1.89995 7.20382C1.67462 7.42915 1.67462 7.79447 1.89995 8.0198L11.8957 18.0156C12.2337 18.3535 12.7817 18.3535 13.1197 18.0156L18.0156 13.1197C18.3535 12.7817 18.3535 12.2337 18.0156 11.8957ZM9.24377 0.67598L19.2395 10.6717C20.2535 11.6857 20.2535 13.3297 19.2395 14.3436L14.3436 19.2395C13.3297 20.2535 11.6857 20.2535 10.6717 19.2395L0.675979 9.24377C-0.225327 8.34246 -0.225326 6.88116 0.67598 5.97985C1.18965 5.46618 1.91805 5.24251 2.64347 5.20403C3.3009 5.16916 4.08482 5.01895 4.55188 4.55188C5.01895 4.08482 5.16916 3.3009 5.20403 2.64347C5.24251 1.91805 5.46618 1.18965 5.97985 0.67598C6.88116 -0.225327 8.34246 -0.225327 9.24377 0.67598Z"
       fill="#BABABA"
     />
@@ -122,8 +122,8 @@ export const EndLocationIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M7.43875 5L9.83875 2H2V8H9.83875L7.43875 5ZM14 10H2V20H0V0H14L10 5L14 10Z"
       fill="white"
     />
@@ -214,11 +214,7 @@ export const PlusIcon = () => (
     }}
     className="plusIcon"
   >
-    <rect
-      width="45"
-      height="45"
-      fill="#191929"
-    />
+    <rect width="45" height="45" fill="#191929" />
     <path
       d="M24 16C23.4477 16 23 16.4477 23 17V23H17C16.4477 23 16 23.4477 16 24C16 24.5523 16.4477 25 17 25H23V31C23 31.5523 23.4477 32 24 32C24.5523 32 25 31.5523 25 31V25H31C31.5523 25 32 24.5523 32 24C32 23.4477 31.5523 23 31 23H25V17C25 16.4477 24.5523 16 24 16Z"
       fill="white"
@@ -282,8 +278,8 @@ export const DateIcon = () => (
       fill="white"
     />
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M3 0C1.34315 0 0 1.34315 0 3V15C0 16.6569 1.34315 18 3 18H15C16.6569 18 18 16.6569 18 15V3C18 1.34315 16.6569 0 15 0H3ZM15 2H3C2.44772 2 2 2.44772 2 3V15C2 15.5523 2.44772 16 3 16H15C15.5523 16 16 15.5523 16 15V3C16 2.44772 15.5523 2 15 2Z"
       fill="white"
     />
@@ -299,8 +295,8 @@ export const RightArrowForAdressForm = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M1.23143 9.79642L5.85392 5.33942C6.04869 5.1518 6.04869 4.84869 5.85392 4.66058L1.23143 0.203577C0.950267 -0.0678594 0.492813 -0.0678595 0.211148 0.203576C-0.0700169 0.475012 -0.0700169 0.915547 0.211148 1.18698L4.16544 5.00024L0.211147 8.81253C-0.0700177 9.08445 -0.0700177 9.52499 0.211147 9.79642C0.492812 10.0679 0.950266 10.0679 1.23143 9.79642Z"
       fill="white"
     />
@@ -316,8 +312,8 @@ export const LeftArrowForAdressForm = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M4.76857 0.838343L0.146076 5.29535C-0.048692 5.48297 -0.048692 5.78608 0.146076 5.97418L4.76857 10.4312C5.04973 10.7026 5.50719 10.7026 5.78885 10.4312C6.07002 10.1598 6.07002 9.71922 5.78885 9.44778L1.83456 5.63452L5.78885 1.82224C6.07002 1.55031 6.07002 1.10978 5.78885 0.838343C5.50719 0.566907 5.04973 0.566907 4.76857 0.838343Z"
       fill="white"
     />
@@ -374,9 +370,9 @@ export const BookinglaneIcon = () => (
         width="149"
         height="161.144"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"
@@ -446,9 +442,9 @@ export const BookinglaneIconForMobile = () => (
         width="149"
         height="161.144"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"
@@ -502,8 +498,8 @@ export const BackArrowIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M4.76857 0.203577L0.146076 4.66058C-0.048692 4.8482 -0.048692 5.15131 0.146076 5.33942L4.76857 9.79642C5.04973 10.0679 5.50719 10.0679 5.78885 9.79642C6.07002 9.52499 6.07002 9.08445 5.78885 8.81302L1.83456 4.99976L5.78885 1.18747C6.07002 0.915548 6.07002 0.475013 5.78885 0.203577C5.50719 -0.0678587 5.04973 -0.0678587 4.76857 0.203577Z"
       fill="white"
     />
@@ -519,8 +515,8 @@ export const ForwardArrowIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M1.23143 0.203577L5.85392 4.66058C6.04869 4.8482 6.04869 5.15131 5.85392 5.33942L1.23143 9.79642C0.950267 10.0679 0.492813 10.0679 0.211148 9.79642C-0.0700169 9.52499 -0.0700169 9.08445 0.211148 8.81302L4.16544 4.99976L0.211148 1.18747C-0.0700169 0.915548 -0.0700169 0.475013 0.211148 0.203577C0.492813 -0.0678587 0.950267 -0.0678587 1.23143 0.203577Z"
       fill="white"
     />

@@ -3,17 +3,21 @@ import * as axios from "axios"
 const jwtToken = localStorage.getItem("Authorization")
 
 const axiosInstance = axios.create({
-  baseURL: `http://ec2-18-118-140-167.us-east-2.compute.amazonaws.com/api/`,
+  baseURL: `https://api.bookinglane.com/api/`,
   headers: {
-    'Authorization': 'Bearer ' + jwtToken,
+    Authorization: "Bearer " + jwtToken,
     "Access-Control-Allow-Origin": "*",
   },
 })
 
 export const authApi = {
   getToken() {
-    const company0Key = "35c0b3e4-50b4-4b02-8ea6-237811b6cebd"
-    return axios.post("http://ec2-18-118-140-167.us-east-2.compute.amazonaws.com/api/companywidget/company-widget-auth" , {"accessKey": "35c0b3e4-50b4-4b02-8ea6-237811b6cebd"} )
+    const company0Key = "14862f6b-0e7a-47d0-810a-06a348fd9ec1"
+    return axios
+      .post(
+        "https://api.bookinglane.com/api/companywidget/company-widget-auth",
+        { accessKey: "14862f6b-0e7a-47d0-810a-06a348fd9ec1" }
+      )
       .then((response) => {
         return response
       })
@@ -23,7 +27,7 @@ export const authApi = {
     const jwtToken = localStorage.getItem("Authorization")
 
     const headers = {
-      "Authorization": "Bearer " + jwtToken,
+      Authorization: "Bearer " + jwtToken,
       "Access-Control-Allow-Origin": "*",
     }
 

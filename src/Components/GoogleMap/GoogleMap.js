@@ -243,6 +243,7 @@ const GoogleMap = React.memo(
                                         fontFamily: "Roboto",
                                         fontWeight: "700",
                                         fontSize: "0.9rem",
+                                        paddingTop: "2px",
                                         marginLeft: "-5px",
                                         marginRight: "-5px",
                                       }}
@@ -258,12 +259,20 @@ const GoogleMap = React.memo(
                                   position="end"
                                 >
                                   {id === destinations.length - 1 && (
-                                    <span onClick={addEndPoint}>
+                                    <span
+                                      onClick={addEndPoint}
+                                      style={{
+                                        marginTop: "5px",
+                                      }}
+                                    >
                                       <AddLocIcon />
                                     </span>
                                   )}
                                   {id > 0 && id < destinations.length - 1 && (
-                                    <span onClick={() => removeEndPoint(id)}>
+                                    <span
+                                      onClick={() => removeEndPoint(id)}
+                                      style={{ marginBottom: "6px" }}
+                                    >
                                       <DeleteLocIcon />
                                     </span>
                                   )}

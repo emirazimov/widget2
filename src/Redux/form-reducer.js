@@ -17,7 +17,7 @@ let initialState = {
   orderSum: 0,
   orderStartDate: "",
   orderStartTime: "",
-  passengersQuantity: 0,
+  capacity: 0,
   carInfo: {
     id: 0,
   },
@@ -63,7 +63,7 @@ let initialState = {
     email: "",
     phoneNumber: "",
   },
-  isAirportPickupIncluded: false,
+  isGateMeeting: false,
   flightNumber: "",
   airlines: {
     id: 0,
@@ -109,7 +109,7 @@ const formReducer = (state = initialState, action) => {
         orderSum: 0,
         orderStartDate: "",
         orderStartTime: "",
-        passengersQuantity: 0,
+        capacity: 0,
         carInfo: {
           id: 0,
         },
@@ -155,7 +155,7 @@ const formReducer = (state = initialState, action) => {
           email: "",
           phoneNumber: "",
         },
-        isAirportPickupIncluded: false,
+        isGateMeeting: false,
         flightNumber: "",
         airlines: {
           id: 0,

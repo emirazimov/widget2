@@ -35,7 +35,7 @@ const App = (props) => {
   const classes = useStyles(props)
 
   const [activeStep, setActiveStep] = React.useState(0)
-  let position = React.useRef({x: userScreenWidth -300, y: 10})
+  let position = React.useRef({ x: userScreenWidth - 300, y: 10 })
   const [expanded, setExpanded] = React.useState(false)
   const [disabled, setDisabled] = React.useState(false)
   const [disabledWidget, setDisabledWidget] = React.useState(false)
@@ -68,9 +68,9 @@ const App = (props) => {
   const handleChange = (panel) => (event, isExpanded) => {
     yOrdinate = position.current.y
     xOrdinate = position.current.x
-    position.current.y = 0
+    position.current.y = -10
     if (userScreenWidth - xOrdinate < 500) {
-      position.current.x = userScreenWidth - 520
+      position.current.x = userScreenWidth - 450
     }
     if (xOrdinate < -20) {
       position.current.x = 0
@@ -81,7 +81,7 @@ const App = (props) => {
   const enableAccordionButton = (e) => {
     setTimeout(() => {
       setDisabled(false)
-    }, 120)
+    }, 200)
 
     setHeightOfCard(refOfCard.current.clientHeight)
 
@@ -129,7 +129,7 @@ const App = (props) => {
   const enableAccordionButtonMobile = (e) => {
     setTimeout(() => {
       setDisabled(false)
-    }, 100)
+    }, 160)
 
     setHeightOfCard(refOfCard.current.clientHeight)
     {
@@ -175,7 +175,7 @@ const App = (props) => {
     if (!expanded)
       setTimeout(() => {
         setDisabled(true)
-      }, 120)
+      }, 200)
   }
   const handleDragForMobile = (e, ui) => {
     position.current.x = ui.x
@@ -183,7 +183,7 @@ const App = (props) => {
     if (!expanded)
       setTimeout(() => {
         setDisabled(true)
-      }, 120)
+      }, 160)
   }
 
   const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1)
@@ -218,7 +218,7 @@ const App = (props) => {
                 onDrag={handleDragForMobile}
                 onStop={enableAccordionButtonMobile}
                 position={position.current}
-                // disabled={draggable ? true : false}
+                // disabled={true}
                 cancel="#mainest "
                 onClick={() => {
                   console.log("hello drag")
@@ -240,7 +240,6 @@ const App = (props) => {
                 }}
                 expanded={expanded === "panel1"}
                 onChange={handleChange("panel1")}
-                id="panel1a-header1"
               >
                 <AccordionSummary
                   className={classes.accordionMobile}
@@ -431,7 +430,7 @@ const App = (props) => {
                   onStop={enableAccordionButton}
                   position={position.current}
                   // defaultPosition={{ x: userScreenWidth, y: 25 }}
-                  
+
                   // disabled={false}
                   // bounds="body"
                   handle=".companyProfileClassForDrag, #panel1a-header"

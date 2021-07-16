@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       alignItems: "center",
       // padding: theme.spacing(2),
-      paddingRight: '16px',
+      paddingRight: "16px",
     },
   },
   priceBox: {
@@ -98,7 +98,7 @@ const Preview = ({
         setDistance={setDistance}
         // style={{ height: "250px" }}
       />
-      <Grid container justify="center" >
+      <Grid container justify="center">
         <Grid
           container
           direction="column"
@@ -109,9 +109,9 @@ const Preview = ({
             item
             style={{
               // height: "135px",
-              paddingRight: !isMobile ? "14.5px" : '0px',
+              paddingRight: !isMobile ? "14.5px" : "0px",
               marginTop: "10px",
-              marginBottom: '5px'
+              marginBottom: "5px",
             }}
           >
             <Grid
@@ -119,9 +119,8 @@ const Preview = ({
               direction="row"
               justify="space-between"
               alignItems="center"
-              
             >
-              <Grid item style={{width: '47%'}}>
+              <Grid item style={{ width: "47%" }}>
                 <Carousel
                   autoPlay={false}
                   animation="slide"
@@ -173,8 +172,8 @@ const Preview = ({
                         <img
                           src={url.path}
                           style={{
-                            width: !isMobile ? '170px' : '100%',
-                            height: !isMobile ? '127px' : '116px',
+                            width: !isMobile ? "170px" : "100%",
+                            height: !isMobile ? "127px" : "116px",
                             borderRadius: "8px",
                             cursor: "zoom-in",
                           }}
@@ -203,8 +202,8 @@ const Preview = ({
                           "https://fl-1.cdn.flockler.com/embed/not-found.png"
                         }
                         style={{
-                          width: !isMobile ? '170px' : '100%',
-                          height: !isMobile ? '127px' : '116px',
+                          width: !isMobile ? "170px" : "100%",
+                          height: !isMobile ? "127px" : "116px",
                           borderRadius: "8px",
                         }}
                         alt="car"
@@ -395,13 +394,12 @@ const Preview = ({
               </Grid>
             </Grid>
           </Grid>
-          <Grid item >
+          <Grid item>
             <Grid
               container
               direction="row"
               justify="space-between"
               alignItems="center"
-              
             >
               <Grid item>
                 <Typography style={{ color: "white", fontSize: "16px" }}>
@@ -501,7 +499,7 @@ const Preview = ({
                     wordWrap: "break-word",
                     color: "white",
                     fontSize: "16px",
-                    marginLeft: '20px',
+                    marginLeft: "20px",
                     width: "93.30%",
                     textAlign: "end",
                   }}
@@ -541,7 +539,7 @@ const Preview = ({
                     wordWrap: "break-word",
                     color: "white",
                     fontSize: "16px",
-                    marginLeft: '20px',
+                    marginLeft: "20px",
                     width: "92.80%",
                     textAlign: "end",
                   }}

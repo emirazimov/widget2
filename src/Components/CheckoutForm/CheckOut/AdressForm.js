@@ -99,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
     objectFit: "contain",
     padding: "2px",
     paddingLeft: "6px",
-    paddingBottom: '5px',
+    paddingBottom: "5px",
     paddingTop: "10px",
     userDrag: "none",
     userSelect: "none",
@@ -339,13 +339,13 @@ const AdressFormwithoutReactMemo = ({
     if (onSubmit2(data)) {
       getCompanyCars({
         hours: hoursAddressForm,
-        isAirportPickupIncluded: isGateMeeting,
+        isGateMeeting: isGateMeeting,
         airlines: { id: airlineId },
         orderAddressDetails: [...destinations],
         page: pageSize,
-        bookingType: bookingType,
         typeId: carSelectionID,
-        passengersQuantity: passengers,
+        capacity: passengers,
+        bookingType: bookingType,
       })
 
       const resData = {
@@ -353,7 +353,22 @@ const AdressFormwithoutReactMemo = ({
         orderStartTime: `${data.orderStartTime}`,
       }
       setFormData(resData)
-
+      console.log(
+        destinations[0].rideCheckPoint,
+        destinations[1].rideCheckPoint,
+        data.orderStartDate,
+        data.orderStartTime,
+        {
+          hours: hoursAddressForm,
+          isAirportPickupIncluded: isGateMeeting,
+          airlines: { id: airlineId },
+          orderAddressDetails: [...destinations],
+          page: pageSize,
+          bookingType: bookingType,
+          typeId: carSelectionID,
+          passengersQuantity: passengers,
+        }
+      )
       next()
     }
     // } else {
@@ -524,7 +539,7 @@ const AdressFormwithoutReactMemo = ({
                               border: "none",
                               backgroundColor: "#191929",
                               paddingLeft: "10px",
-                              paddingRight: '10px'
+                              paddingRight: "10px",
                             }}
                             InputProps={{
                               ...params.InputProps,
