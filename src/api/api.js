@@ -1,38 +1,41 @@
-import * as axios from "axios"
+import * as axios from 'axios'
 
-const jwtToken = localStorage.getItem("Authorization")
+const jwtToken = localStorage.getItem('Authorization')
 
 const axiosInstance = axios.create({
   baseURL: `https://api.bookinglane.com/api/`,
   headers: {
-    Authorization: "Bearer " + jwtToken,
-    "Access-Control-Allow-Origin": "*",
+    Authorization: 'Bearer ' + jwtToken,
+    'Access-Control-Allow-Origin': '*',
   },
 })
 
 export const authApi = {
   getToken() {
-    const company0Key = "14862f6b-0e7a-47d0-810a-06a348fd9ec1"
+    const company0Key = '14862f6b-0e7a-47d0-810a-06a348fd9ec1'
     return axios
       .post(
-        "https://api.bookinglane.com/api/companywidget/company-widget-auth",
-        { accessKey: "14862f6b-0e7a-47d0-810a-06a348fd9ec1" }
+        'https://api.bookinglane.com/api/companywidget/company-widget-auth',
+        { accessKey: '14862f6b-0e7a-47d0-810a-06a348fd9ec1' }
       )
       .then((response) => {
         return response
       })
+      .then((response) => {
+        window.localStorage.setItem('Authorization', response.data.jwtToken)
+      })
   },
 
   getCompanyProfile() {
-    const jwtToken = localStorage.getItem("Authorization")
+    const jwtToken = localStorage.getItem('Authorization')
 
     const headers = {
-      Authorization: "Bearer " + jwtToken,
-      "Access-Control-Allow-Origin": "*",
+      Authorization: 'Bearer ' + jwtToken,
+      'Access-Control-Allow-Origin': '*',
     }
 
     return axiosInstance
-      .get("companywidget/company-widget-info", { headers: headers })
+      .get('companywidget/company-widget-info', { headers: headers })
       .then((response) => {
         return response
       })
@@ -55,7 +58,7 @@ export const fleetApi = {
 
   getCompanyCars(dataForm) {
     return axiosInstance
-      .post("car/companycars-withprice", { ...dataForm })
+      .post('car/companycars-withprice', { ...dataForm })
       .then((response) => {
         return response.data
       })
