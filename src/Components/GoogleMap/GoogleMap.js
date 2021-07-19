@@ -1,33 +1,33 @@
-import Grid from "@material-ui/core/Grid"
-import InputAdornment from "@material-ui/core/InputAdornment"
-import MenuItem from "@material-ui/core/MenuItem"
-import { makeStyles } from "@material-ui/core/styles"
-import { useForm, useFormContext } from "react-hook-form"
-import TextField from "@material-ui/core/TextField"
-import { GoogleApiWrapper, Map, Marker } from "google-maps-react"
-import React, { forwardRef, useState } from "react"
+import Grid from '@material-ui/core/Grid'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import MenuItem from '@material-ui/core/MenuItem'
+import { makeStyles } from '@material-ui/core/styles'
+import { useForm, useFormContext } from 'react-hook-form'
+import TextField from '@material-ui/core/TextField'
+import { GoogleApiWrapper, Map, Marker } from 'google-maps-react'
+import React, { forwardRef, useState } from 'react'
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
-} from "react-places-autocomplete"
+} from 'react-places-autocomplete'
 import {
   AddLocIcon,
   DeleteLocIcon,
   EndLocationIcon,
   StartLocationIcon,
-} from "../../assets/icons"
-import rideCheckPointErrors from "./../CheckoutForm/CheckOut/AdressForm"
-import MapStyles from "./mapStyles"
+} from '../../assets/icons'
+import rideCheckPointErrors from './../CheckoutForm/CheckOut/AdressForm'
+import MapStyles from './mapStyles'
 
 var redBorder = null
 
 const useStyles = makeStyles((theme) => ({
   mapContainer: {
-    width: "91.5%",
-    height: "200px",
-    position: "relative",
-    marginLeft: "17px",
-    borderRadius: "20px",
+    width: '91.5%',
+    height: '200px',
+    position: 'relative',
+    marginLeft: '17px',
+    borderRadius: '20px',
   },
   destinationContainer: {
     padding: theme.spacing(1),
@@ -36,25 +36,26 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
   },
   dropDown: {
-    position: "absolute",
+    position: 'absolute',
     zIndex: 1000,
-    justifyContent: "center",
-    width: "500px",
+    justifyContent: 'center',
+    width: '500px',
   },
   destinationInputFrom: {},
   inputRoot: {
-    height: "40px",
-    backgroundColor: "#191929",
-    "&::placeholder": {
-      color: "white",
+    height: '40px',
+    backgroundColor: '#191929',
+    '&::placeholder': {
+      color: 'white',
     },
-    fontSize: "14px",
+    fontSize: '14px',
   },
   noBorderDefault: {
-    border: "1px solid #191929",
+    padding: '0px',
+    border: '1px solid #191929',
   },
   noBorderRed: {
-    border: "1px solid #db5858",
+    border: '1px solid #db5858',
   },
   input: {
     // "&::-webkit-input-placeholder": {
@@ -73,10 +74,10 @@ const useStyles = makeStyles((theme) => ({
     //   /* Firefox 18- */ color: "white",
     //   opacity: "1",
     // },
-    "&::placeholder": {
-      color: "white",
-      opacity: "1",
-      fontSize: "14px",
+    '&::placeholder': {
+      color: 'white',
+      opacity: '1',
+      fontSize: '14px',
     },
   },
 }))
@@ -125,7 +126,7 @@ const GoogleMap = React.memo(
         const latLng = await getLatLng(results[0])
         const placeId = results[0].place_id
         let placeType = 0
-        if (results[0].types.some((types) => types === "airport")) {
+        if (results[0].types.some((types) => types === 'airport')) {
           placeType = 2
         }
         selectedArray = [...destinations]
@@ -145,11 +146,11 @@ const GoogleMap = React.memo(
         let newArr = [
           ...destinations,
           {
-            rideCheckPoint: "",
+            rideCheckPoint: '',
             latitude: 0,
             longitude: 0,
             placeType: 0,
-            placeId: "",
+            placeId: '',
           },
         ]
         setDestinations(newArr)
@@ -167,7 +168,7 @@ const GoogleMap = React.memo(
 
       return (
         <>
-          <Grid container direction="column">
+          <Grid container direction='column'>
             <Grid item className={classes.mapContainer}>
               <Map
                 google={props.google}
@@ -188,7 +189,15 @@ const GoogleMap = React.memo(
               </Map>
             </Grid>
             <Grid item className={classes.destinationContainer}>
-              <Grid container direction="column">
+              <Grid
+                container
+                direction='column'
+                // className={
+                //   redBorderOnSubmit || redBorderOnSubmit2
+                //     ? classes.noBorderRed
+                //     : classes.noBorderDefault
+                // }
+              >
                 {destinations.map((destination, id) => (
                   <PlacesAutocomplete
                     value={destinations[id].rideCheckPoint}
@@ -205,28 +214,29 @@ const GoogleMap = React.memo(
                       <div>
                         <Grid item className={classes.destinationText}>
                           <TextField
-                            position="start"
+                            position='start'
                             style={{
-                              height: "40px",
-                              border: "none",
-                              marginTop: "-4px",
+                              height: '40px',
+                              border: 'none',
+                              marginTop: '-4px',
                             }}
-                            variant="outlined"
-                            name="rideCheckPoint"
+                            variant='outlined'
+                            name='rideCheckPoint'
                             defaultValue={destinations[id].rideCheckPoint}
                             fullWidth
                             // inputRef={ref}
                             InputProps={{
                               classes: {
                                 root: classes.inputRoot,
-                                notchedOutline: redBorderOnSubmit
-                                  ? classes.noBorderRed
-                                  : classes.noBorderDefault,
+                                notchedOutline:
+                                  redBorderOnSubmit || redBorderOnSubmit2
+                                    ? classes.noBorderRed
+                                    : classes.noBorderDefault,
                                 input: classes.input,
                               },
 
                               startAdornment: (
-                                <InputAdornment style={{ marginRight: "10px" }}>
+                                <InputAdornment style={{ marginRight: '10px' }}>
                                   {id === 0 && <StartLocationIcon />}
                                   {id === destinations.length - 1 && (
                                     <EndLocationIcon />
@@ -234,18 +244,18 @@ const GoogleMap = React.memo(
                                   {id > 0 && id < destinations.length - 1 && (
                                     <span
                                       style={{
-                                        borderRadius: "50%",
-                                        width: "24px",
-                                        height: "25px",
-                                        backgroundColor: "transparent",
-                                        border: "2px solid #FFFFFF",
-                                        textAlign: "center",
-                                        fontFamily: "Roboto",
-                                        fontWeight: "700",
-                                        fontSize: "0.9rem",
-                                        paddingTop: "2px",
-                                        marginLeft: "-5px",
-                                        marginRight: "-5px",
+                                        borderRadius: '50%',
+                                        width: '24px',
+                                        height: '25px',
+                                        backgroundColor: 'transparent',
+                                        border: '2px solid #FFFFFF',
+                                        textAlign: 'center',
+                                        fontFamily: 'Roboto',
+                                        fontWeight: '700',
+                                        fontSize: '0.9rem',
+                                        paddingTop: '2px',
+                                        marginLeft: '-5px',
+                                        marginRight: '-5px',
                                       }}
                                     >
                                       {id}
@@ -255,14 +265,14 @@ const GoogleMap = React.memo(
                               ),
                               endAdornment: (
                                 <InputAdornment
-                                  style={{ cursor: "pointer" }}
-                                  position="end"
+                                  style={{ cursor: 'pointer' }}
+                                  position='end'
                                 >
                                   {id === destinations.length - 1 && (
                                     <span
                                       onClick={addEndPoint}
                                       style={{
-                                        marginTop: "5px",
+                                        marginTop: '5px',
                                       }}
                                     >
                                       <AddLocIcon />
@@ -271,7 +281,7 @@ const GoogleMap = React.memo(
                                   {id > 0 && id < destinations.length - 1 && (
                                     <span
                                       onClick={() => removeEndPoint(id)}
-                                      style={{ marginBottom: "6px" }}
+                                      style={{ marginBottom: '6px' }}
                                     >
                                       <DeleteLocIcon />
                                     </span>
@@ -280,37 +290,37 @@ const GoogleMap = React.memo(
                               ),
                             }}
                             {...getInputProps({
-                              placeholder: id === 0 ? "From" : "To",
-                              className: "location-search-input",
+                              placeholder: id === 0 ? 'From' : 'To',
+                              className: 'location-search-input',
                             })}
                           />
                         </Grid>
                         <div className={classes.dropDown}>
                           {loading && (
-                            <div style={{ alignItems: "center" }}>
+                            <div style={{ alignItems: 'center' }}>
                               Loading...
                             </div>
                           )}
                           {suggestions.map((suggestion, id) => {
                             const className = suggestion.active
-                              ? "suggestion-item--active"
-                              : "suggestion-item"
+                              ? 'suggestion-item--active'
+                              : 'suggestion-item'
                             // inline style for demonstration purpose
                             const style = suggestion.active
                               ? {
-                                  backgroundColor: "#101020",
-                                  cursor: "pointer",
-                                  textTransform: "none",
-                                  justifyContent: "center",
+                                  backgroundColor: '#101020',
+                                  cursor: 'pointer',
+                                  textTransform: 'none',
+                                  justifyContent: 'center',
 
-                                  width: "380px",
+                                  width: '380px',
                                 }
                               : {
-                                  backgroundColor: "#160E31",
-                                  cursor: "pointer",
-                                  textTransform: "none",
-                                  width: "380px",
-                                  justifyContent: "center",
+                                  backgroundColor: '#160E31',
+                                  cursor: 'pointer',
+                                  textTransform: 'none',
+                                  width: '380px',
+                                  justifyContent: 'center',
                                 }
                             return (
                               <div
@@ -322,8 +332,8 @@ const GoogleMap = React.memo(
                               >
                                 <MenuItem
                                   style={{
-                                    whiteSpace: "pre-line",
-                                    fontSize: "14px",
+                                    whiteSpace: 'pre-line',
+                                    fontSize: '14px',
                                   }}
                                 >
                                   {suggestion.description}
@@ -345,6 +355,6 @@ const GoogleMap = React.memo(
   )
 )
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyCmKhi_5V_pulQtm6DFJ8teDZpR9I5hJoM",
-  libraries: ["places", "drawing", "geometry"],
+  apiKey: 'AIzaSyCmKhi_5V_pulQtm6DFJ8teDZpR9I5hJoM',
+  libraries: ['places', 'drawing', 'geometry'],
 })(GoogleMap)
